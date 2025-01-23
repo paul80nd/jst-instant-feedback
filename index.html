@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Instant Feedback</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1e1e1e;
+      display: flex;
+      flex-direction: column;
+      font-family: "Open Sans", serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-variation-settings: "wdth" 100;
+      height: 100vh;
+      justify-content: space-between;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: whitesmoke;
+      font-size: 7.5vh;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 8vh;
+    }
+
+    .face-container {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .face-container figure {
+      margin-block-start: 0;
+      margin-block-end: 0;
+      margin-inline-start: 0;
+      margin-inline-end: 0;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .face-container figcaption {
+      color: whitesmoke;
+      font-size: 4vh;
+      font-weight: 500;
+    }
+
+    .face-container .result {
+      color: yellow;
+      font-size: 7vh;
+    }
+
+    .control-container {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .control-container div {
+      background-color: crimson;
+      color: white;
+      min-height: 8vh;
+      min-width: 16vh;
+      gap: 10px;
+      vertical-align: middle;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5vh;
+      font-weight: 600;
+      border: 1px solid white;
+      cursor: pointer;
+    }
+
+    .control-container div#show {
+      background-color: inherit;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1 id="title">STARTING UP</h1>
+  </div>
+  <div class="face-container">
+    <figure onclick="takeResult(0);">
+      <svg id="svgA" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200"
+        style="width: 100%;">
+        <circle cx="100" cy="100" r="93" stroke="DarkGreen" fill="LightGreen" stroke-width="12" />
+        <circle cx="70" cy="70" r="14" fill="DarkGreen" />
+        <circle cx="130" cy="70" r="14" fill="DarkGreen" />
+        <path fill="DarkGreen" d="M 65 120 a 1 1 0 0 0 70 0 Z" stroke="DarkGreen" stroke-width="13" />
+      </svg>
+      <figcaption>Excellent</figcaption>
+      <span class="result" id="resultA">X</span>
+    </figure>
+    <figure onclick="takeResult(1);">
+      <svg id="svgB" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
+        <circle cx="100" cy="100" r="93" stroke="LimeGreen" fill="PaleGreen" stroke-width="12" />
+        <circle cx="70" cy="70" r="14" fill="LimeGreen" />
+        <circle cx="130" cy="70" r="14" fill="LimeGreen" />
+        <path fill="PaleGreen" d="M 65 120 a 4 3 0 0 0 70 0" stroke="LimeGreen" stroke-width="13"
+          stroke-linecap="round" />
+      </svg>
+      <figcaption>Good</figcaption>
+      <span class="result" id="resultB">X</span>
+    </figure>
+    <figure onclick="takeResult(2);">
+      <svg id="svgC" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
+        <circle cx="100" cy="100" r="93" stroke="Orange" fill="Khaki" stroke-width="12" />
+        <circle cx="70" cy="70" r="14" fill="Orange" />
+        <circle cx="130" cy="70" r="14" fill="Orange" />
+        <path fill="Khaki" d="M 65 130 l 70 0" stroke="Orange" stroke-width="13" stroke-linecap="round" />
+      </svg>
+      <figcaption>OK</figcaption>
+      <span class="result" id="resultC">X</span>
+    </figure>
+    <figure onclick="takeResult(3);">
+      <svg id="svgD" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
+        <circle cx="100" cy="100" r="93" stroke="Coral" fill="Bisque" stroke-width="12" />
+        <circle cx="70" cy="70" r="14" fill="Coral" />
+        <circle cx="130" cy="70" r="14" fill="Coral" />
+        <path fill="Bisque" d="M 135 140 a 4 3 0 0 0 -70 0" stroke="Coral" stroke-width="13" stroke-linecap="round" />
+      </svg>
+      <figcaption>Poor</figcaption>
+      <span class="result" id="resultD">X</span>
+    </figure>
+    <figure onclick="takeResult(4);">
+      <svg id="svgE" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
+        <circle cx="100" cy="100" r="93" stroke="Crimson" fill="Pink" stroke-width="12" />
+        <circle cx="70" cy="70" r="14" fill="Crimson" />
+        <circle cx="130" cy="70" r="14" fill="Crimson" />
+        <path fill="Crimson" d="M 135 140 a 4 3 0 0 0 -70 0 Z" stroke="Crimson" stroke-width="13"
+          stroke-linecap="round" />
+      </svg>
+      <figcaption>Very Bad</figcaption>
+      <span class="result" id="resultE">X</span>
+    </figure>
+  </div>
+  <div class="control-container">
+    <div id="reset" onclick="reset()">Reset</div>
+    <div id="hide" onclick="hide()">Hide</div>
+    <div id="show" onclick="show()" style="display:none;"></div>
+  </div>
+
+  <script>
+    var results = [0, 0, 0, 0, 0];
+    var acceptingResult = false;
+
+    function takeResult(index) {
+      if (acceptingResult == true) {
+        return;
+      }
+      acceptingResult = true;
+      document.getElementById('svgA').style.opacity = index == 0 ? 1 : 0.3;
+      document.getElementById('svgB').style.opacity = index == 1 ? 1 : 0.3;
+      document.getElementById('svgC').style.opacity = index == 2 ? 1 : 0.3;
+      document.getElementById('svgD').style.opacity = index == 3 ? 1 : 0.3;
+      document.getElementById('svgE').style.opacity = index == 4 ? 1 : 0.3;
+      document.getElementById('title').innerHTML = "Thank you for your feedback!";
+      results[index]++;
+      setTimeout(() => {
+        document.getElementById('svgA').style.opacity = 1;
+        document.getElementById('svgB').style.opacity = 1;
+        document.getElementById('svgC').style.opacity = 1;
+        document.getElementById('svgD').style.opacity = 1;
+        document.getElementById('svgE').style.opacity = 1;
+        updateResults();
+        acceptingResult = false;
+      }, 1500);
+    }
+
+    function updateResults() {
+      document.getElementById('resultA').innerHTML = results[0];
+      document.getElementById('resultB').innerHTML = results[1];
+      document.getElementById('resultC').innerHTML = results[2];
+      document.getElementById('resultD').innerHTML = results[3];
+      document.getElementById('resultE').innerHTML = results[4];
+      localStorage.setItem('results', JSON.stringify(results));
+      document.getElementById('title').innerHTML = "Please rate this stall by tapping a face below";
+    }
+
+    function reset() {
+      if (confirm('Are you sure you want to reset the results?')) {
+        results = [0, 0, 0, 0, 0];
+        updateResults();
+      }
+    }
+
+    function hide() {
+     const resultEls = document.getElementsByClassName("result");
+     for (let i = 0; i < resultEls.length; i++) {
+       resultEls[i].style.display = "none";
+     }
+     document.getElementById('hide').style.display = "none";
+     document.getElementById('show').style.display = "";
+     document.getElementById('reset').style.display = "none";
+    }
+
+    function show() {
+      const resultEls = document.getElementsByClassName("result");
+      for (let i = 0; i < resultEls.length; i++) {
+        resultEls[i].style.display = "";
+      }
+      document.getElementById('hide').style.display = "";
+      document.getElementById('show').style.display = "none";
+      document.getElementById('reset').style.display = "";
+     }
+
+    function initialise() {
+      // Retrieve existing results (after a browser refresh) or default
+      var ls = localStorage.getItem('results');
+      if (ls == null) {
+        results = [0, 0, 0, 0, 0];
+      }
+      else {
+        results = JSON.parse(ls);
+      }
+
+      updateResults();
+      hide();
+    }
+
+    // Main Entry Point
+    window.onload = () => initialise();
+
+  </script>
+</body>
+
+</html>
