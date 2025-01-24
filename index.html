@@ -26,7 +26,7 @@
       font-size: 7.5vh;
       font-weight: 500;
       text-align: center;
-      margin-top: 8vh;
+      margin-top: 6vh;
     }
 
     .face-container {
@@ -34,7 +34,7 @@
       display: flex;
       justify-content: space-between;
       gap: 25px;
-      padding: 30px;
+      padding: 0px 80px;
       flex-grow: 1;
     }
 
@@ -49,7 +49,7 @@
 
     .face-container figcaption {
       color: whitesmoke;
-      font-size: 4vh;
+      font-size: 5vh;
       font-weight: 500;
     }
 
@@ -93,14 +93,13 @@
   </div>
   <div class="face-container">
     <figure onclick="takeResult(0);">
-      <svg id="svgA" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200"
-        style="width: 100%;">
+      <svg id="svgA" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
         <circle cx="100" cy="100" r="93" stroke="DarkGreen" fill="LightGreen" stroke-width="12" />
         <circle cx="70" cy="70" r="14" fill="DarkGreen" />
         <circle cx="130" cy="70" r="14" fill="DarkGreen" />
         <path fill="DarkGreen" d="M 65 120 a 1 1 0 0 0 70 0 Z" stroke="DarkGreen" stroke-width="13" />
       </svg>
-      <figcaption>Excellent</figcaption>
+      <figcaption>Super excited</figcaption>
       <span class="result" id="resultA">X</span>
     </figure>
     <figure onclick="takeResult(1);">
@@ -111,7 +110,7 @@
         <path fill="PaleGreen" d="M 65 120 a 4 3 0 0 0 70 0" stroke="LimeGreen" stroke-width="13"
           stroke-linecap="round" />
       </svg>
-      <figcaption>Good</figcaption>
+      <figcaption>Excited</figcaption>
       <span class="result" id="resultB">X</span>
     </figure>
     <figure onclick="takeResult(2);">
@@ -121,9 +120,10 @@
         <circle cx="130" cy="70" r="14" fill="Orange" />
         <path fill="Khaki" d="M 65 130 l 70 0" stroke="Orange" stroke-width="13" stroke-linecap="round" />
       </svg>
-      <figcaption>OK</figcaption>
+      <figcaption>Don't get it</figcaption>
       <span class="result" id="resultC">X</span>
     </figure>
+    <!--
     <figure onclick="takeResult(3);">
       <svg id="svgD" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 200 200" style="width: 100%;">
         <circle cx="100" cy="100" r="93" stroke="Coral" fill="Bisque" stroke-width="12" />
@@ -145,6 +145,7 @@
       <figcaption>Very Bad</figcaption>
       <span class="result" id="resultE">X</span>
     </figure>
+  -->
   </div>
   <div class="control-container">
     <div id="reset" onclick="reset()">Reset</div>
@@ -164,16 +165,16 @@
       document.getElementById('svgA').style.opacity = index == 0 ? 1 : 0.3;
       document.getElementById('svgB').style.opacity = index == 1 ? 1 : 0.3;
       document.getElementById('svgC').style.opacity = index == 2 ? 1 : 0.3;
-      document.getElementById('svgD').style.opacity = index == 3 ? 1 : 0.3;
-      document.getElementById('svgE').style.opacity = index == 4 ? 1 : 0.3;
-      document.getElementById('title').innerHTML = "Thank you for your feedback!";
+      //document.getElementById('svgD').style.opacity = index == 3 ? 1 : 0.3;
+      //document.getElementById('svgE').style.opacity = index == 4 ? 1 : 0.3;
+      document.getElementById('title').innerHTML = "Thank you for<br />your feedback!";
       results[index]++;
       setTimeout(() => {
         document.getElementById('svgA').style.opacity = 1;
         document.getElementById('svgB').style.opacity = 1;
         document.getElementById('svgC').style.opacity = 1;
-        document.getElementById('svgD').style.opacity = 1;
-        document.getElementById('svgE').style.opacity = 1;
+        //document.getElementById('svgD').style.opacity = 1;
+        //document.getElementById('svgE').style.opacity = 1;
         updateResults();
         acceptingResult = false;
       }, 1500);
@@ -183,10 +184,10 @@
       document.getElementById('resultA').innerHTML = results[0];
       document.getElementById('resultB').innerHTML = results[1];
       document.getElementById('resultC').innerHTML = results[2];
-      document.getElementById('resultD').innerHTML = results[3];
-      document.getElementById('resultE').innerHTML = results[4];
+      //document.getElementById('resultD').innerHTML = results[3];
+      //document.getElementById('resultE').innerHTML = results[4];
       localStorage.setItem('results', JSON.stringify(results));
-      document.getElementById('title').innerHTML = "Please rate this stall by tapping a face below";
+      document.getElementById('title').innerHTML = "How do you feel about what<br />you heard at this stall today?";
     }
 
     function reset() {
@@ -197,13 +198,13 @@
     }
 
     function hide() {
-     const resultEls = document.getElementsByClassName("result");
-     for (let i = 0; i < resultEls.length; i++) {
-       resultEls[i].style.display = "none";
-     }
-     document.getElementById('hide').style.display = "none";
-     document.getElementById('show').style.display = "";
-     document.getElementById('reset').style.display = "none";
+      const resultEls = document.getElementsByClassName("result");
+      for (let i = 0; i < resultEls.length; i++) {
+        resultEls[i].style.display = "none";
+      }
+      document.getElementById('hide').style.display = "none";
+      document.getElementById('show').style.display = "";
+      document.getElementById('reset').style.display = "none";
     }
 
     function show() {
@@ -214,7 +215,7 @@
       document.getElementById('hide').style.display = "";
       document.getElementById('show').style.display = "none";
       document.getElementById('reset').style.display = "";
-     }
+    }
 
     function initialise() {
       // Retrieve existing results (after a browser refresh) or default
